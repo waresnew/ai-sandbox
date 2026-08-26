@@ -1,5 +1,6 @@
 # TODO: block outbound traffic in container
 FROM debian:trixie-slim
+ARG TARGETARCH
 LABEL org.opencontainers.image.source=https://github.com/waresnew/ai-sandbox
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -12,11 +13,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     procps \
     unzip \
     zip \
+    wget \
     jq \
     ripgrep \
     fd-find \
     build-essential \
+    kitty-terminfo \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -LsSf \
+    "https://github.com/kovidgoyal/kitty/releases/latest/download/kitten-linux-${TARGETARCH}" \
+    -o /usr/local/bin/kitten \
+    && chmod +x /usr/local/bin/kitten
 
 RUN useradd --create-home --shell /bin/bash agent
 WORKDIR /home/agent

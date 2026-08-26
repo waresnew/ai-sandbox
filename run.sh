@@ -15,4 +15,5 @@ container run --rm -it \
     --mount type=bind,src="$(pwd)",dst=/home/agent/project \
     --mount type=bind,src="$HOME/.claude",dst=/home/agent/.claude \
     --mount type=bind,src="$HOME/.codex",dst=/home/agent/.codex \
+    --env TERM="$TERM" \
     ghcr.io/waresnew/ai-sandbox:latest "$@"
