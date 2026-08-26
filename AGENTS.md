@@ -7,5 +7,5 @@ You are running inside a Docker container.
 - The container filesystem is otherwise ephemeral.
 - You are running as a non-root user without sudo.
 - Your agent configuration is mounted from the host; treat it as persistent user state.
-- Network access is available.
+- Outbound network requests are on a domain-based whitelist.
 - Do not modify files outside `~/project` unless explicitly required.

@@ -1,0 +1,10 @@
+# model providers
+api.anthropic.com
+api.openai.com
+
+# python
+pypi.org
+files.pythonhosted.org
+
+# nodejs
+registry.npmjs.org

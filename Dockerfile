@@ -1,4 +1,3 @@
-# TODO: block outbound traffic in container
 FROM debian:trixie-slim
 ARG TARGETARCH
 LABEL org.opencontainers.image.source=https://github.com/waresnew/ai-sandbox
