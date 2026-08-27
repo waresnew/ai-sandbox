@@ -32,7 +32,6 @@ USER agent
 RUN mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd
 ENV PATH="/home/agent/.local/bin:${PATH}"
 
-# don't need to preinstall python/node
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -44,6 +43,7 @@ RUN source "$HOME/.nvm/nvm.sh" \
     && nvm install --lts \
     && npm install -g @openai/codex
 
+RUN uv python install
 
 COPY AGENTS.md /home/agent/AGENTS.md
 WORKDIR /home/agent/project
