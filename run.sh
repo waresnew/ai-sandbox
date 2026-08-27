@@ -9,7 +9,6 @@ CONTAINER_NETWORK_NAME="ai-sandbox-net"
 read -p "Confirm the mounting of $(pwd): [y/N]"
 echo
 if [[ ! $REPLY =~ ^[yY]$ ]]; then
-    echo "Aborted."
     exit 1
 fi
 
@@ -37,15 +36,17 @@ setup_proxy() {
         container network create --internal "$CONTAINER_NETWORK_NAME"
     fi
     tmp_config_file="$CONFIG_DIR/.$$.conf"
+    PROXY_LOG_FILE="$CONFIG_DIR/$$_proxy.log"
     cp "$CONFIG_DIR/proxy/tinyproxy.tmpl.conf" "$tmp_config_file"
-    proxy_port="$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1])')" # https://unix.stackexchange.com/a/478529
+    proxy_port="$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1])')" # https://unix.stackexchange.com/a/478529 NOTE: the port can get used by someone else between proxy_port=... and tinyproxy -d -c ...
     echo "Port $proxy_port" >>"$tmp_config_file"
-    tinyproxy -d -c "$tmp_config_file" >/dev/null 2>&1 &
+    tinyproxy -d -c "$tmp_config_file" >"$PROXY_LOG_FILE" 2>&1 &
     proxy_pid=$!
 }
 handle_exit() {
     kill "$proxy_pid" 2>/dev/null || true
     rm -f "$tmp_config_file"
+    rm -f "$PROXY_LOG_FILE"
 }
 trap handle_exit EXIT
 setup_platform_specific_stuff

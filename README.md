@@ -17,3 +17,7 @@ Most of these requirements can be worked around by editing the script yourself:
 - tinyproxy
 - python
 - Apple container
+
+## Troubleshooting
+
+Proxy logs are temporarily stored in ~/.config/ai-sandbox/****_proxy.log
