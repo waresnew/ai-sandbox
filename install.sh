@@ -12,5 +12,5 @@ PROXY_SRC="proxy"
 PROXY_DST="$CONFIG_DIR"
 mkdir -p "$CONFIG_DIR"
 cp -r "$PROXY_SRC" "$PROXY_DST"
-echo -e "Filter \"$PROXY_DST/proxy/domain_whitelist.txt\"" >>$PROXY_DST/proxy/tinyproxy.conf
+echo -e "Filter \"$PROXY_DST/proxy/domain_whitelist.txt\"" >>$PROXY_DST/proxy/tinyproxy.tmpl.conf
 echo "Copied $PROXY_SRC to $PROXY_DST"
