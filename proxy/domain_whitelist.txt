@@ -1,6 +1,7 @@
 # model providers
 api.anthropic.com
 api.openai.com
+platform.claude.com
 
 # python
 pypi.org
