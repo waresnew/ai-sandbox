@@ -46,7 +46,9 @@ RUN source "$HOME/.nvm/nvm.sh" \
 
 RUN uv python install
 
-COPY AGENTS.md /home/agent/AGENTS.md
+COPY --chown=agent:agent container_files/AGENTS.md /home/agent/AGENTS.md
+COPY --chown=agent:agent container_files/.claude.json /home/agent/.claude.json
+
 WORKDIR /home/agent/project
 
 CMD ["/bin/bash"]

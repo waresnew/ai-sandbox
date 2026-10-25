@@ -1,0 +1,9 @@
+{
+    "hasCompletedOnboarding": true,
+    "theme": "dark-ansi",
+    "projects": {
+        "/home/agent/project": {
+            "hasTrustDialogAccepted": true
+        }
+    }
+}
