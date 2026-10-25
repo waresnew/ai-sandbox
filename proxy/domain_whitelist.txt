@@ -4,6 +4,7 @@ api.openai.com
 chatgpt.com
 auth.openai.com
 platform.claude.com
+downloads.claude.ai
 
 # python
 pypi.org
