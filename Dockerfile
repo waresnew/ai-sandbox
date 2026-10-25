@@ -34,7 +34,8 @@ ENV PATH="/home/agent/.local/bin:${PATH}"
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.7/install.sh | bash \
-    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && curl -fsSL https://bun.sh/install | BUN_INSTALL="$HOME/.local" bash
 
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
