@@ -44,7 +44,7 @@ RUN source "$HOME/.nvm/nvm.sh" \
     && nvm install --lts \
     && npm install -g @openai/codex
 
-RUN uv python install
+RUN uv python install --default
 
 COPY --chown=agent:agent container_files/AGENTS.md /home/agent/AGENTS.md
 COPY --chown=agent:agent container_files/.claude.json /home/agent/.claude.json
