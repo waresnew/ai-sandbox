@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fd-find \
     build-essential \
     kitty-terminfo \
+    valgrind \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LsSf \
